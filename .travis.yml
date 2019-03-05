@@ -13,7 +13,7 @@ before_install:
   - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('example') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
   - sudo mysql_upgrade -u root -pexample
   - sudo service mysql restart
-  - sudo mysql -u root -proot -e "start transaction;create database `db_springboot`;grant select, insert, update, delete, create, drop, references, index, alter, create temporary tables, lock tables, create view, create routine, alter routine, execute, trigger, show view on `db_springboot`.* to 'root'@'%';commit;"
+  - sudo mysql -u root -pexample -e "start transaction;create database `db_springboot`;grant select, insert, update, delete, create, drop, references, index, alter, create temporary tables, lock tables, create view, create routine, alter routine, execute, trigger, show view on `db_springboot`.* to 'root'@'%';commit;"
 install: true
 script: mvn clean install
 cache:
