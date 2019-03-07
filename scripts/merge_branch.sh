@@ -2,6 +2,10 @@
 
 IF_PR=true
 
+echo "Is a PR? $TRAVIS_PULL_REQUEST"
+echo "Source branch: $TRAVIS_PULL_REQUEST_BRANCH"
+echo "Target branch: $TRAVIS_BRANCH"
+
 if [ "$TRAVIS_PULL_REQUEST" == "$IF_PR" ]; then
   echo "Merging PR into $TRAVIS_BRANCH"
  
