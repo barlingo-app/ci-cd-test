@@ -1,6 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 
-if [[ "$TRAVIS_PULL_REQUEST" = "true" ]]; then
+if [ "$TRAVIS_PULL_REQUEST" == "true" ]
+then
   echo "Merging PR into $TRAVIS_BRANCH"
  
   git fetch origin
