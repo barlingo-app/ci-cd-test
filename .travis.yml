@@ -17,5 +17,4 @@ branches:
   only:
     - CI
 after_success:
-  - "cd $TRAVIS_BUILD_DIR"
-  - ./scripts/merge_branch.sh
+  - "sh scripts/merge_branch.sh"
