@@ -1,12 +1,11 @@
 #!/bin/bash
 
-IF_PR=true
+NOT_PR=false
 
-echo "Is a PR? $TRAVIS_PULL_REQUEST"
 echo "Source branch: $TRAVIS_PULL_REQUEST_BRANCH"
 echo "Target branch: $TRAVIS_BRANCH"
 
-if [ "$TRAVIS_PULL_REQUEST" == "$IF_PR" ]; then
+if [ "$TRAVIS_PULL_REQUEST" != "$NOT_PR" ]; then
   echo "Merging PR into $TRAVIS_BRANCH"
  
   git fetch origin
