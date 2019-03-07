@@ -17,4 +17,4 @@ branches:
   only:
     - CI
 after_success:
-  ./scripts/merge_branch.sh
+  - ./scripts/merge_branch.sh
