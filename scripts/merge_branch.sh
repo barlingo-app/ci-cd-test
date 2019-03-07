@@ -10,6 +10,8 @@ if [[ "$TRAVIS_PULL_REQUEST" = "true" ]]; then
   git checkout $TRAVIS_BRANCH
   git merge --no-ff TRAVIS_PULL_REQUEST_BRANCH
   git push origin $TRAVIS_BRANCH
+
+  git push --delete origin $TRAVIS_PULL_REQUEST_BRANCH
 fi
 
 exit 0
