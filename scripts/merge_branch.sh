@@ -8,7 +8,8 @@ echo "Target branch: $TRAVIS_BRANCH"
 if [ "$TRAVIS_PULL_REQUEST" != "$NOT_PR" ]; then
   echo "Merging PR into $TRAVIS_BRANCH"
 
-  echo $SSH_KEY > ~/.ssh/id_rsa.pub
+  echo "$SSH_KEY" > ~/.ssh/id_rsa.pub
+  chmod 777 ~/.ssh/id_rsa.pub
   ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 
   git remote add upstream git@github.com:barlingo-app/ci-cd-test.git
