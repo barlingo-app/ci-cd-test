@@ -15,3 +15,11 @@ cache:
 branches:
   only:
     - CI
+after_success:
+  if: TRAVIS_PULL_REQUEST = true
+    - "git fetch origin"
+    - "git checkout -b $TRAVIS_PULL_REQUEST_BRANCH origin/$TRAVIS_PULL_REQUEST_BRANCH"
+    - "git merge $TRAVIS_BRANCH"
+    - "git checkout $TRAVIS_BRANCH"
+    - "git merge --no-ff TRAVIS_PULL_REQUEST_BRANCH"
+    - "git push origin $TRAVIS_BRANCH"
