@@ -4,6 +4,7 @@ jdk:
 services:
   - mysql
 before_install:
+  - chmod +x scripts/
   - sudo mysql -uroot -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('example');FLUSH PRIVILEGES;"
   - sudo service mysql restart
   - sudo mysql -u root -pexample -e "start transaction;create database db_springboot;grant select, insert, update, delete,  create, drop, references, index, alter, create temporary tables, lock tables, create view, create routine, alter routine, execute, trigger, show view on db_springboot.* to 'root'@'localhost';commit;"
