@@ -24,5 +24,8 @@ branches:
 after_success:
   - "bash scripts/merge_branch.sh"
 deploy:
-  - "bash scripts/deploy.sh"
-
+  provider: script
+  script: bash scripts/deploy.sh
+  on:
+    branch: CI
+    tags: true
