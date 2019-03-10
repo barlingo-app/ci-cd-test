@@ -27,5 +27,4 @@ deploy:
   provider: script
   script: bash scripts/deploy.sh
   on:
-    branch: CI
-    tags: true
+    all_branches: true
