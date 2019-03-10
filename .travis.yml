@@ -5,9 +5,11 @@ services:
   - mysql
 before_install:
   - chmod +x scripts/
-  - sudo mysql -uroot -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('example');FLUSH PRIVILEGES;"
+  - sudo mysql -uroot -e "SET PASSWORD FOR '${CI_DB_USERNAME}'@'localhost' = PASSWORD('${CI_DB_PASSWORD}');FLUSH PRIVILEGES;"
   - sudo service mysql restart
-  - sudo mysql -u root -pexample -e "start transaction;create database db_springboot;grant select, insert, update, delete,  create, drop, references, index, alter, create temporary tables, lock tables, create view, create routine, alter routine, execute, trigger, show view on db_springboot.* to 'root'@'localhost';commit;"
+  - sudo mysql -u $CI_DB_USERNAME -p$CI_DB_PASSWORD -e "start transaction;create database ${CI_DB_NAME};grant select, insert, update, delete,  create, drop, references, index, alter, create temporary tables, lock tables, create view, create routine, alter routine, execute, trigger, show view on ${CI_DB_NAME}.* to '${CI_DB_USERNAME}'@'localhost';commit;"
+  - "if [ \"$TRAVIS_PULL_REQUEST_BRANCH\" != \"false\" ]; then git checkout $TRAVIS_PULL_REQUEST_BRANCH; fi"
+  - "export spring_profiles_active=ci"
 git:
   depth: false
 install: true
@@ -18,5 +20,12 @@ cache:
 branches:
   only:
     - CI
+  tags: true
 after_success:
   - "bash scripts/merge_branch.sh"
+deploy:
+  provider: script
+  script: bash scripts/deploy.sh
+  on:
+    branch: CI
+    tags: true
