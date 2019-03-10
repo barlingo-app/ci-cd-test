@@ -5,9 +5,9 @@ services:
   - mysql
 before_install:
   - chmod +x scripts/
-  - sudo mysql -uroot -e "SET PASSWORD FOR '$CI_DB_USERNAME'@'localhost' = PASSWORD('$CI_DB_PASSWORD');FLUSH PRIVILEGES;"
+  - sudo mysql -uroot -e "SET PASSWORD FOR '${CI_DB_USERNAME}'@'localhost' = PASSWORD('${CI_DB_PASSWORD}');FLUSH PRIVILEGES;"
   - sudo service mysql restart
-  - sudo mysql -u root -pexample -e "start transaction;create database $CI_DB_NAME;grant select, insert, update, delete,  create, drop, references, index, alter, create temporary tables, lock tables, create view, create routine, alter routine, execute, trigger, show view on $CI_DB_NAME.* to '$CI_DB_USERNAME'@'localhost';commit;"
+  - sudo mysql -u $CI_DB_USERNAME -p$CI_DB_PASSWORD -e "start transaction;create database ${CI_DB_NAME};grant select, insert, update, delete,  create, drop, references, index, alter, create temporary tables, lock tables, create view, create routine, alter routine, execute, trigger, show view on ${CI_DB_NAME}.* to '${CI_DB_USERNAME}'@'localhost';commit;"
   - "if [ \"$TRAVIS_PULL_REQUEST_BRANCH\" != \"false\" ]; then git checkout $TRAVIS_PULL_REQUEST_BRANCH; fi"
   - "export spring_profiles_active=ci"
 git:
