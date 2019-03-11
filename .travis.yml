@@ -20,7 +20,7 @@ cache:
 branches:
   only:
     - CI
-    - /^refs\/tags\/.{1,}$/
+  tags: true
 after_success:
   - "bash scripts/merge_branch.sh"
 deploy:
