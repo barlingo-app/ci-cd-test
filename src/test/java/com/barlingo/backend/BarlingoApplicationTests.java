@@ -1,4 +1,4 @@
-package com.barlingo;
+package com.barlingo.backend;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

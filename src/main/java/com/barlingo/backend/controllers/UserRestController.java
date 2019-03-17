@@ -1,4 +1,4 @@
-package com.barlingo.controllers;
+package com.barlingo.backend.controllers;
 
 import java.util.List;
 
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.barlingo.models.entities.User;
-import com.barlingo.models.services.UserServiceImpl;
+import com.barlingo.backend.models.entities.User;
+import com.barlingo.backend.models.services.UserServiceImpl;
 
 @CrossOrigin(origins = { "http://localhost:3000" })
 @RestController

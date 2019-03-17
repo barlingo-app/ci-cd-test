@@ -1,10 +1,10 @@
-package com.barlingo.models.entities;
+package com.barlingo.backend.models.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Version;
+import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -15,6 +15,7 @@ import lombok.Data;
 
 @Data
 @Entity
+@Table(name = "users")
 public class User {
 
 	// Attributes

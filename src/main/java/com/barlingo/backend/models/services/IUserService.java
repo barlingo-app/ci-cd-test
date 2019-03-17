@@ -1,8 +1,8 @@
-package com.barlingo.models.services;
+package com.barlingo.backend.models.services;
 
 import java.util.List;
 
-import com.barlingo.models.entities.User;
+import com.barlingo.backend.models.entities.User;
 
 public interface IUserService {
 

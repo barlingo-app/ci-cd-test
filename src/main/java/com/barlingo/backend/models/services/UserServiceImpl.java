@@ -1,4 +1,4 @@
-package com.barlingo.models.services;
+package com.barlingo.backend.models.services;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.barlingo.models.entities.User;
-import com.barlingo.models.repositories.UserRepository;
+import com.barlingo.backend.models.entities.User;
+import com.barlingo.backend.models.repositories.UserRepository;
 
 @Service
 @Transactional
